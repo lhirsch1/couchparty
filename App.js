@@ -4,10 +4,36 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
 import * as React from 'react';
+import * as firebase from 'firebase'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+
+
+// <!-- The core Firebase JS SDK is always required and must be listed first -->
+// <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+
+// <!-- TODO: Add SDKs for Firebase products that you want to use
+//      https://firebase.google.com/docs/web/setup#available-libraries -->
+// <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
+    authDomain: "couchparty-d571d.firebaseapp.com",
+    databaseURL: "https://couchparty-d571d.firebaseio.com",
+    projectId: "couchparty-d571d",
+    storageBucket: "couchparty-d571d.appspot.com",
+    messagingSenderId: "821252602321",
+    appId: "1:821252602321:web:385b04d72c079f3824c8f0",
+    measurementId: "G-8NELRFXV6M"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  //firebase.analytics();
+
+
 
 const Stack = createStackNavigator();
 
@@ -59,3 +85,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+
