@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
+import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 'react-native';
+import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 import * as firebase from 'firebase'
 import { MonoText } from '../components/StyledText';
@@ -22,7 +23,7 @@ var pass = 'abc'
 firebase.initializeApp(firebaseConfig);
 
 //firebase authenication with email
-// const auth = firebase.auth();
+const auth = firebase.auth();
 //  auth.signInWithEmailAndPassword(email, pass);
 //  auth.createUserWithEmailAndPassword(email,pass);
 // auth.onAuthStateChanged(firebaseUser => {});
@@ -31,12 +32,31 @@ function createUser(){
 
   console.log('hello')
   const auth = firebase.auth();
-  var email ='123@gmail.com'
+  //need to validate email input
+  var email ='abc@gmail.com'
   var pass = 'abcadfa'
   const promise = auth.createUserWithEmailAndPassword(email,pass);
   promise.catch(e => console.log(e.message));
-  auth.onAuthStateChanged(firebaseUser => {});
+  // auth.onAuthStateChanged(firebaseUser => {});
 }
+
+auth.onAuthStateChanged(firebaseUser => {
+
+  if(firebaseUser){
+    console.log('f b user');
+    console.log(firebaseUser)
+  }
+  else{
+    console.log('not logged in ')
+  }
+});
+
+function handleFormSubmit(event){
+  var user = document.getElementById('userName').value
+  var pass =  document.getElementById('password').value
+  console.log('user ',user, ' pass ',pass)
+}
+
 
 export default function HomeScreen() {
   return (
@@ -53,8 +73,28 @@ export default function HomeScreen() {
           />
         </View>
         <View>
+
+        <Container>
+        <Header />
+        <Content>
+          <Form>
+            <Item>
+              <Input id='userName' placeholder="Username" />
+            </Item>
+            <Item last>
+              <Input id='password' placeholder="Password" />
+            </Item>
+            <Button rounded light
+            onPress={handleFormSubmit}
+            >
+              <Text>Create Account</Text>
+            </Button>
+          </Form>
+        </Content>
+      </Container>
+
           <Button 
-          onPress={createUser()}
+          onPress={createUser}
           title='hello'
           
           />
