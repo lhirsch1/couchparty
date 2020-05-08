@@ -1,9 +1,42 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import * as firebase from 'firebase'
 import { MonoText } from '../components/StyledText';
+
+var firebaseConfig = {
+  apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
+  authDomain: "couchparty-d571d.firebaseapp.com",
+  databaseURL: "https://couchparty-d571d.firebaseio.com",
+  projectId: "couchparty-d571d",
+  storageBucket: "couchparty-d571d.appspot.com",
+  messagingSenderId: "821252602321",
+  appId: "1:821252602321:web:385b04d72c079f3824c8f0",
+  measurementId: "G-8NELRFXV6M",
+ 
+
+}; 
+var email ='123@gmail.com';
+var pass = 'abc'
+firebase.initializeApp(firebaseConfig);
+
+//firebase authenication with email
+// const auth = firebase.auth();
+//  auth.signInWithEmailAndPassword(email, pass);
+//  auth.createUserWithEmailAndPassword(email,pass);
+// auth.onAuthStateChanged(firebaseUser => {});
+
+function createUser(){
+
+  console.log('hello')
+  const auth = firebase.auth();
+  var email ='123@gmail.com'
+  var pass = 'abcadfa'
+  const promise = auth.createUserWithEmailAndPassword(email,pass);
+  promise.catch(e => console.log(e.message));
+  auth.onAuthStateChanged(firebaseUser => {});
+}
 
 export default function HomeScreen() {
   return (
@@ -17,6 +50,13 @@ export default function HomeScreen() {
                 : require('../assets/images/robot-prod.png')
             }
             style={styles.welcomeImage}
+          />
+        </View>
+        <View>
+          <Button 
+          onPress={createUser()}
+          title='hello'
+          
           />
         </View>
 
