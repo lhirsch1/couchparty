@@ -28,14 +28,12 @@ const auth = firebase.auth();
 //  auth.createUserWithEmailAndPassword(email,pass);
 // auth.onAuthStateChanged(firebaseUser => {});
 
-function createUser(){
+function createUser(user, pass){
 
-  console.log('hello')
+
   const auth = firebase.auth();
   //need to validate email input
-  var email ='abc@gmail.com'
-  var pass = 'abcadfa'
-  const promise = auth.createUserWithEmailAndPassword(email,pass);
+  const promise = auth.createUserWithEmailAndPassword(user,pass);
   promise.catch(e => console.log(e.message));
   // auth.onAuthStateChanged(firebaseUser => {});
 }
@@ -54,7 +52,8 @@ auth.onAuthStateChanged(firebaseUser => {
 function handleFormSubmit(event){
   var user = document.getElementById('userName').value
   var pass =  document.getElementById('password').value
-  console.log('user ',user, ' pass ',pass)
+  createUser(user,pass)
+
 }
 
 
