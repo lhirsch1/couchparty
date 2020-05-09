@@ -44,7 +44,7 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator({
   //adding chatroom because it is on a different screen -BP
-  Chatroom,
+  Main,
 });
 
 export default function App(props) {
