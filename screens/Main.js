@@ -1,8 +1,18 @@
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-class Chatroom extends React.Component{
+class Main extends React.Component{
+    static navigationOptions = {
+        title: 'Chatter',
+    };
 
-}
+    state = {
+        name: "",
+    };
+    
+    onPress = () => 
+    this.props.navigation.navigate("Chat", {name: this.state.name})
+
+
 
 onChangeText = name => this.ListeningStateChangedEvent({ name });
 
@@ -19,6 +29,7 @@ render () {
             <TouchableOpacity onPress={this.onPress}>
                 <Text style={StyleSheet.buttonText}></Text>
             </TouchableOpacity>
-        </View>
+        </View> 
     )
+}
 }
