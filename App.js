@@ -42,7 +42,10 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 // // auth.createUserWithEmailAndPassword(email,pass);
 // auth.onAuthStateChanged(firebaseUser => {});
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator({
+  //adding chatroom because it is on a different screen -BP
+  Chatroom,
+});
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -93,4 +96,5 @@ const styles = StyleSheet.create({
   },
 });
 
-
+//exporting as the root component
+export default Stack;
