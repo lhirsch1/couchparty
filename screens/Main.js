@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput, TouchableOpacity, View } from "react-native-gesture-handler";
 
 class Main extends React.Component{
     static navigationOptions = {
