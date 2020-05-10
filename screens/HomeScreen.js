@@ -49,13 +49,26 @@ auth.onAuthStateChanged(firebaseUser => {
   }
 });
 
-function handleFormSubmit(event){
+function handleCreateUser(event){
   var user = document.getElementById('userName').value
   var pass =  document.getElementById('password').value
   createUser(user,pass)
 
 }
 
+function handleSignIn(event){
+  var userSign = document.getElementById('userNameSign').value
+  var passSign =  document.getElementById('passwordSign').value
+  auth.signInWithEmailAndPassword(userSign,passSign)
+  .catch(err => console.log(err))
+}
+
+function handleSignOut(){
+  auth.signOut()
+  .then(console.log('signed out'))
+  .catch(error => console.log(error))
+}
+console.log('env  ', process.env)
 
 export default function HomeScreen() {
   return (
@@ -84,19 +97,33 @@ export default function HomeScreen() {
               <Input id='password' placeholder="Password" />
             </Item>
             <Button rounded light
-            onPress={handleFormSubmit}
+            onPress={handleCreateUser}
             >
               <Text>Create Account</Text>
             </Button>
           </Form>
         </Content>
+        <Content>
+          <Form>
+            <Item>
+              <Input id='userNameSign' placeholder="Username" />
+            </Item>
+            <Item last>
+              <Input id='passwordSign' placeholder="Password" />
+            </Item>
+            <Button rounded light
+            onPress={handleSignIn}
+            >
+              <Text>Sign In</Text>
+            </Button>
+          </Form>
+          <Button rounded
+          onPress={handleSignOut}
+          >
+            <Text>Log Out</Text>
+          </Button>
+        </Content>
       </Container>
-
-          <Button 
-          onPress={createUser}
-          title='hello'
-          
-          />
         </View>
 
         <View style={styles.getStartedContainer}>
