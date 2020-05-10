@@ -1,41 +1,39 @@
-// import React from 'react';
-// import {GiftedChat} from 'react-native-gifted=chat';
-// import Firebase from "firebase";
+import React from 'react'
+import { Platform, KeyboardAvoidingView, SafeAreaView} from 'react-native';
+import {GiftedChat} from 'react-native-gifted-chat';
+import Fire from "../Fire";
 
-// class Chat extends React.Component <Props>{
-//     static navigationObjects = ({ navigation }) => ({
-//         title: (navigation.state.params || {}).name || 'Chat!',
-//     });
+export default class ChatScreen extends React.Component {
+    state = {
+        messages: []
+    }
 
-//     state = {
-//         mesesages: [],
-//     };
+    get user() {
+        return {
+            _id: Fire.uid,
+            name: this.props.navigation.state.params.name
+        }
+    }
+    componentDidMount(){
+        Fire.get(message => this.setState(previous => ({
+            messages: GiftedChat.append(previous.message, message)
+        })))
+    }
 
-//     get user() {
-//         return {
-//             name: this.props.navigation.state.params.name,
-//             _id: Firebase.shared.uid,
-//         };
-//     }
+    componentWillMount() {
+        Fire.off();
+    }
+    render() {
+        const chat = <GiftedChat messages={this.state.messages} onSend={Fire.send} user={this.user}/>;
+        if(Platform.OS === 'android'){
+            return (
+                <KeyboardAvoidingView style={{Flex:1}} behavior="padding" KeyboardAvoidingView={30} enabled>
+                    {chat}
+                </KeyboardAvoidingView>
+            )
+        }
+    return <SafeAreaView style={{flex:1}}>{chat}</SafeAreaView>
+    }
+}
 
-//     render() {
-//         return(
-//             <GiftedChat
-//             messages ={this.state.messages}
-//             onSend={Firebase.shared.send}
-//             user={this.user} />
-//         )
-//     }
 
-// }
-
-// ComponentDidMount(){
-//     Firebase.shared.on(message => this.setStae(previousState => ({
-//         messages: GiftedChat.append(previousState.messages, message)
-//     })))
-// }
-// ComponentWillMount(){
-//     Firebase.shared.off();
-// }
-
-// export default Chat;

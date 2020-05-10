@@ -48,10 +48,24 @@ class Fire {
             createdAt,
             text,
             user
-        }
-        }
+        };
+        };
+
+    get = callback => {
+        this.db.on('child_added', snapshot => callback(this.parse(snapshot)));
+    };
+
+    off() {
+        this.db.off()
+    }
 
     get db() {
         return firebase.database().ref("message");
     }
+    
+    get uid(){
+        return(firebase.auth().currentUser || {}).uid;
+    }
 }
+
+export default new Fire();
