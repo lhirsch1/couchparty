@@ -31,4 +31,16 @@ class Chat extends React.Component <Props>{
             user={this.user} />
         )
     }
+
 }
+
+ComponentDidMount(){
+    Firebase.shared.on(message => this.setStae(previousState => ({
+        messages: GiftedChat.append(previousState.messages, message)
+    })))
+}
+ComponentWillMount(){
+    Firebase.shared.off();
+}
+
+export default Chat;

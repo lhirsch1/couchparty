@@ -6,9 +6,11 @@ import * as Font from 'expo-font';
 import * as React from 'react';
 import * as firebase from 'firebase'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-
+import { createAppContainer } from 'react-navigation'
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import LoginScreen from "./screens/LoginScreen"
+import ChatScreen from "./screens/ChatScreen"
 
 
 // <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -42,59 +44,67 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 // // auth.createUserWithEmailAndPassword(email,pass);
 // auth.onAuthStateChanged(firebaseUser => {});
 
-const Stack = createStackNavigator({
+const AppNavigator = createStackNavigator(
   //adding chatroom because it is on a different screen -BP
-  Main,
-});
-
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-
-  // Load any resources or data that we need prior to rendering the app
-  React.useEffect(() => {
-    async function loadResourcesAndDataAsync() {
-      try {
-        SplashScreen.preventAutoHide();
-
-        // Load fonts
-        await Font.loadAsync({
-          ...Ionicons.font,
-          'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-        });
-      } catch (e) {
-        // We might want to provide this error information to an error reporting service
-        console.warn(e);
-      } finally {
-        setLoadingComplete(true);
-        SplashScreen.hide();
-      }
-    }
-
-    loadResourcesAndDataAsync();
-  }, []);
-
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return null;
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  {
+  Login: LoginScreen,
+  Chat: ChatScreen
   },
-});
+  {
+    headerMode: 'none'
+  }
+);
+
+//Commented everything out below until the export default in order to test the chat feature!! -BP
+
+// export default function App(props) {
+//   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+
+//   // Load any resources or data that we need prior to rendering the app
+//   React.useEffect(() => {
+//     async function loadResourcesAndDataAsync() {
+//       try {
+//         SplashScreen.preventAutoHide();
+
+//         // Load fonts
+//         await Font.loadAsync({
+//           ...Ionicons.font,
+//           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+//         });
+//       } catch (e) {
+//         // We might want to provide this error information to an error reporting service
+//         console.warn(e);
+//       } finally {
+//         setLoadingComplete(true);
+//         SplashScreen.hide();
+//       }
+//     }
+
+//     loadResourcesAndDataAsync();
+//   }, []);
+
+//   if (!isLoadingComplete && !props.skipLoadingScreen) {
+//     return null;
+//   } else {
+//     return (
+//       <View style={styles.container}>
+//         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+//         <NavigationContainer linking={LinkingConfiguration}>
+//           <Stack.Navigator>
+//             <Stack.Screen name="Root" component={BottomTabNavigator} />
+//           </Stack.Navigator>
+//         </NavigationContainer>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//   },
+// });
 
 //exporting as the root component
-export default Stack;
+export default createAppContainer(AppNavigator);
