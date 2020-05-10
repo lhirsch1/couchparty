@@ -1,46 +1,41 @@
-import React from 'react';
-import {GiftedChat} from 'react-native-gifted=chat';
+// import React from 'react';
+// import {GiftedChat} from 'react-native-gifted=chat';
+// import Firebase from "firebase";
 
-import Firebase from "firebase";
+// class Chat extends React.Component <Props>{
+//     static navigationObjects = ({ navigation }) => ({
+//         title: (navigation.state.params || {}).name || 'Chat!',
+//     });
 
-type Props = {
-    name?: String,
-};
+//     state = {
+//         mesesages: [],
+//     };
 
-class Chat extends React.Component <Props>{
-    static navigationObjects = ({ navigation }) => ({
-        title: (navigation.state.params || {}).name || 'Chat!',
-    });
+//     get user() {
+//         return {
+//             name: this.props.navigation.state.params.name,
+//             _id: Firebase.shared.uid,
+//         };
+//     }
 
-    state = {
-        mesesages: [],
-    };
+//     render() {
+//         return(
+//             <GiftedChat
+//             messages ={this.state.messages}
+//             onSend={Firebase.shared.send}
+//             user={this.user} />
+//         )
+//     }
 
-    get user() {
-        return {
-            name: this.props.navigation.state.params.name,
-            _id: Firebase.shared.uid,
-        };
-    }
+// }
 
-    render() {
-        return(
-            <GiftedChat
-            messages ={this.state.messages}
-            onSend={Firebase.shared.send}
-            user={this.user} />
-        )
-    }
+// ComponentDidMount(){
+//     Firebase.shared.on(message => this.setStae(previousState => ({
+//         messages: GiftedChat.append(previousState.messages, message)
+//     })))
+// }
+// ComponentWillMount(){
+//     Firebase.shared.off();
+// }
 
-}
-
-ComponentDidMount(){
-    Firebase.shared.on(message => this.setStae(previousState => ({
-        messages: GiftedChat.append(previousState.messages, message)
-    })))
-}
-ComponentWillMount(){
-    Firebase.shared.off();
-}
-
-export default Chat;
+// export default Chat;

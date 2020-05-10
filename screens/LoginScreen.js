@@ -4,7 +4,7 @@ import {Ionicons} from '@expo/vector-icons'
 
 export default class LoginScreen extends React.Component {
     state = {
-        name = ''
+        name:  ''
     }
 
     continue = () => {
@@ -72,3 +72,4 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     }
 })
+
