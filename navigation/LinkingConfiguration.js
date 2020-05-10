@@ -8,7 +8,8 @@ export default {
       screens: {
         Home: 'home',
         Links: 'links',
-        CreatePoll: "create"
+        CreatePoll: "create",
+        PollPage: "poll"
       },
     },
   },

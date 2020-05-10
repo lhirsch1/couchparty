@@ -5,6 +5,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import CreatePollScreen from "../screens/CreatePollScreen"
+import PollPage from "../screens/PollPageScreen"
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -38,6 +39,14 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={CreatePollScreen}
         options={{
           title: 'Create Poll',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+        }}
+      />
+        <BottomTab.Screen
+        name="PollPage"
+        component={PollPage}
+        options={{
+          title: 'Poll Page',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
         }}
       />
