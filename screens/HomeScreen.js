@@ -3,8 +3,11 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import * as firebase from 'firebase'
 import { MonoText } from '../components/StyledText';
+import LinksScreen from './LinksScreen';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
@@ -70,7 +73,7 @@ function handleSignOut(){
 }
 console.log('env  ', process.env)
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -121,6 +124,14 @@ export default function HomeScreen() {
           onPress={handleSignOut}
           >
             <Text>Log Out</Text>
+          </Button>
+          <Button 
+            title="Link page"
+            onPress={()=> navigation.navigate('LinksScreen')}
+          >
+            <Text>
+              Link page
+            </Text>
           </Button>
         </Content>
       </Container>
