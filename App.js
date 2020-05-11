@@ -12,11 +12,16 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 import HomeScreen from './screens/HomeScreen';
 import LinksScreen from './screens/LinksScreen';
 import ChatMenu from './screens/ChatMenu';
-//import CreatePoll from './screens/CreatePollScreen'
+import CreatePoll from './screens/CreatePoll'
 //import Poll from './screens/PollScreen'
 import LoginScreen from "./screens/LoginScreen"
 import ChatScreen from "./screens/ChatScreen"
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> be5b49ed7e648a518a8df2756962fb115200b8d5
 
 
 
@@ -61,9 +66,12 @@ export default function App(props) {
             <Stack.Screen name="root" component={HomeScreen} options={{title:'Sign Up'}}/>
             <Stack.Screen name="LinksScreen" component={LinksScreen} />
             <Stack.Screen name="ChatMenu" component={ChatMenu} />
-            {/* <Stack.Screen name="CreatePoll" component={CreatePoll} />
+            <Stack.Screen name="CreatePoll" component={CreatePoll}/>
+            <Stack.Screen name="ChatScreen" component={ChatScreen} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            {/*
             <Stack.Screen name="Poll" component={Poll} />
-            <Stack.Screen name="ChatRoom" component={ChatRoom} /> */}
+            */}
             
           </Stack.Navigator>
         </NavigationContainer>

@@ -127,7 +127,7 @@ export default function HomeScreen({navigation}) {
           </Button>
           <Button 
             title="Chat Room"
-            onPress={()=> navigation.navigate('ChatRoom')}
+            onPress={()=> navigation.navigate('LoginScreen')}
           >
             <Text>
               Chat Room
@@ -139,6 +139,14 @@ export default function HomeScreen({navigation}) {
           >
             <Text>
               Poll
+            </Text>
+          </Button>
+          <Button 
+            title="CreatePoll"
+            onPress={()=> navigation.navigate('CreatePoll')}
+          >
+            <Text>
+              Create Poll
             </Text>
           </Button>
           <Button 
