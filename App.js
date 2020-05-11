@@ -6,7 +6,7 @@ import * as Font from 'expo-font';
 import * as React from 'react';
 import * as firebase from 'firebase'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-
+import { createAppContainer } from 'react-navigation'
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 import HomeScreen from './screens/HomeScreen';
@@ -14,12 +14,15 @@ import LinksScreen from './screens/LinksScreen';
 import ChatMenu from './screens/ChatMenu';
 //import CreatePoll from './screens/CreatePollScreen'
 //import Poll from './screens/PollScreen'
-//import ChatRoom from './screens/ChatRoomScreen'
+import LoginScreen from "./screens/LoginScreen"
+import ChatScreen from "./screens/ChatScreen"
+
 
 
 
 
 const Stack = createStackNavigator();
+
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -76,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
+//exporting as the root component
