@@ -29,12 +29,14 @@ class Fire {
     }
 
     send = messages => {
+        console.log(messages)
         messages.forEach(item => {
             const message = {
                 text: item.text,
                 timestamp: firebase.database.ServerValue.TIMESTAMP,
                 user: item.user
          }
+         console.log(message)
          this.db.push(message)
         })
     }
@@ -65,6 +67,7 @@ class Fire {
     
     get uid(){
         return(firebase.auth().currentUser || {}).uid
+        
     }
 }
 

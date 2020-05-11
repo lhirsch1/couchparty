@@ -10,13 +10,15 @@ export default class ChatScreen extends React.Component {
     }
 
     get user() {
-        debugger;
+      
         return {
             _id: Fire.uid,
             name: this.props.route.params.name
         }
+        
     }
     componentDidMount(){
+       
         Fire.get(message => this.setState(previous => ({
             messages: GiftedChat.append(previous.messages, message)
         })))
