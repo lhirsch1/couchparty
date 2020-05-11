@@ -6,9 +6,11 @@ import * as Font from 'expo-font';
 import * as React from 'react';
 import * as firebase from 'firebase'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-
+import { createAppContainer } from 'react-navigation'
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import LoginScreen from "./screens/LoginScreen"
+import ChatScreen from "./screens/ChatScreen"
 
 
 // <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -42,7 +44,9 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 // // auth.createUserWithEmailAndPassword(email,pass);
 // auth.onAuthStateChanged(firebaseUser => {});
 
+
 const Stack = createStackNavigator();
+
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -93,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
+//exporting as the root component
