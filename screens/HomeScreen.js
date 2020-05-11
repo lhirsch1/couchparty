@@ -127,7 +127,7 @@ export default function HomeScreen({navigation}) {
           </Button>
           <Button 
             title="Chat Room"
-            onPress={()=> navigation.navigate('ChatRoom')}
+            onPress={()=> navigation.navigate('LoginScreen')}
           >
             <Text>
               Chat Room
