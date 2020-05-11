@@ -60,11 +60,11 @@ class Fire {
     }
 
     get db() {
-        return firebase.database().ref("message");
+        return firebase.database().ref("messages");
     }
     
     get uid(){
-        return(firebase.auth().currentUser || {}).uid;
+        return(firebase.auth().currentUser || {}).uid
     }
 }
 

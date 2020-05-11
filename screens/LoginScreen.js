@@ -4,25 +4,26 @@ import {Ionicons} from '@expo/vector-icons'
 
 export default class LoginScreen extends React.Component {
     state = {
-        name:  ''
+        name: ""
     }
 
     continue = () => {
-        this.props.navigation.naviate("Chat", {name: this.state.name})
+        console.log(this.state.name)
+        this.props.navigation.navigate("Chat", {name: this.state.name})
     }
     render() {
         return (
             <View style={styles.container}>
               <View style={styles.circle} />
               <View style= {{marginHorizontal: 32}}>
-                  <Text style={StyleSheet.header}>username</Text>
+                  <Text style={StyleSheet.header}>Username</Text>
                   <TextInput style={styles.input} placeholder="Enter Name" onChangeText={name => {this.setState({name});
                 }} 
                 value={this.state.name}
                 />
                 <View style={{alignItems: "flex-end", marginTop: 64}}>
                     <TouchableOpacity style={styles.continue} onPress={this.continue}>
-                        <Ionicons name="md-arrrow-round-forward" size={24} color='#FFF'/>
+                        <Ionicons name="md-arrow-round-forward" size={24} color='#FFF'/>
                     </TouchableOpacity>
                 </View>
 

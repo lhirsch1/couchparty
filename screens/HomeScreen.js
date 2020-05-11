@@ -2,9 +2,9 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
-import { ScrollView } from 'react-native-gesture-handler';
 import * as firebase from 'firebase'
 import { MonoText } from '../components/StyledText';
+import { ScrollView } from 'react-native-gesture-handler';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
