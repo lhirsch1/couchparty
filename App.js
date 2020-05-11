@@ -17,15 +17,6 @@ import CreatePoll from './screens/CreatePoll'
 import LoginScreen from "./screens/LoginScreen"
 import ChatScreen from "./screens/ChatScreen"
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> be5b49ed7e648a518a8df2756962fb115200b8d5
-
-
-
-
 const Stack = createStackNavigator();
 
 
