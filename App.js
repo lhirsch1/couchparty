@@ -9,6 +9,8 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import HomeScreen from './screens/HomeScreen';
+import LinksScreen from './screens/LinksScreen';
 
 
 // <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -78,7 +80,8 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="root" component={HomeScreen} options={{title:'Sign Up'}}/>
+            <Stack.Screen name="LinksScreen" component={LinksScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
