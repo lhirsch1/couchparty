@@ -11,6 +11,10 @@ import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 import HomeScreen from './screens/HomeScreen';
 import LinksScreen from './screens/LinksScreen';
+import ChatMenu from './screens/ChatMenu';
+//import CreatePoll from './screens/CreatePollScreen'
+//import Poll from './screens/PollScreen'
+//import ChatRoom from './screens/ChatRoomScreen'
 
 
 
@@ -53,6 +57,11 @@ export default function App(props) {
           <Stack.Navigator>
             <Stack.Screen name="root" component={HomeScreen} options={{title:'Sign Up'}}/>
             <Stack.Screen name="LinksScreen" component={LinksScreen} />
+            <Stack.Screen name="ChatMenu" component={ChatMenu} />
+            {/* <Stack.Screen name="CreatePoll" component={CreatePoll} />
+            <Stack.Screen name="Poll" component={Poll} />
+            <Stack.Screen name="ChatRoom" component={ChatRoom} /> */}
+            
           </Stack.Navigator>
         </NavigationContainer>
       </View>

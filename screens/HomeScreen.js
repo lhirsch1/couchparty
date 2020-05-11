@@ -126,13 +126,30 @@ export default function HomeScreen({navigation}) {
             <Text>Log Out</Text>
           </Button>
           <Button 
-            title="Link page"
-            onPress={()=> navigation.navigate('LinksScreen')}
+            title="Chat Room"
+            onPress={()=> navigation.navigate('ChatRoom')}
           >
             <Text>
-              Link page
+              Chat Room
             </Text>
           </Button>
+          <Button 
+            title="Poll"
+            onPress={()=> navigation.navigate('Poll')}
+          >
+            <Text>
+              Poll
+            </Text>
+          </Button>
+          <Button 
+            title="Chat Menu"
+            onPress={()=> navigation.navigate('ChatMenu')}
+          >
+            <Text>
+              Chat Menu
+            </Text>
+          </Button>
+
         </Content>
       </Container>
         </View>
