@@ -9,40 +9,16 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { createAppContainer } from 'react-navigation'
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import HomeScreen from './screens/HomeScreen';
+import LinksScreen from './screens/LinksScreen';
+import ChatMenu from './screens/ChatMenu';
+//import CreatePoll from './screens/CreatePollScreen'
+//import Poll from './screens/PollScreen'
 import LoginScreen from "./screens/LoginScreen"
 import ChatScreen from "./screens/ChatScreen"
 
 
-// <!-- The core Firebase JS SDK is always required and must be listed first -->
-// <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
 
-// <!-- TODO: Add SDKs for Firebase products that you want to use
-//      https://firebase.google.com/docs/web/setup#available-libraries -->
-// <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
-
-
-  // var firebaseConfig = {
-  //   apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
-  //   authDomain: "couchparty-d571d.firebaseapp.com",
-  //   databaseURL: "https://couchparty-d571d.firebaseio.com",
-  //   projectId: "couchparty-d571d",
-  //   storageBucket: "couchparty-d571d.appspot.com",
-  //   messagingSenderId: "821252602321",
-  //   appId: "1:821252602321:web:385b04d72c079f3824c8f0",
-  //   measurementId: "G-8NELRFXV6M",
-  //   // email:'hirschlukasa@gmail.com',
-  //   // pass:'123'
-
-  // };
-  // Initialize Firebase
-  // firebase.initializeApp(firebaseConfig);
-  //firebase.analytics();
-
-// //firebase authenication with email
-// const auth = firebase.auth();
-// // auth.signInWithEmailAndPassword(email, pass);
-// // auth.createUserWithEmailAndPassword(email,pass);
-// auth.onAuthStateChanged(firebaseUser => {});
 
 
 const Stack = createStackNavigator();
@@ -82,7 +58,13 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="root" component={HomeScreen} options={{title:'Sign Up'}}/>
+            <Stack.Screen name="LinksScreen" component={LinksScreen} />
+            <Stack.Screen name="ChatMenu" component={ChatMenu} />
+            {/* <Stack.Screen name="CreatePoll" component={CreatePoll} />
+            <Stack.Screen name="Poll" component={Poll} />
+            <Stack.Screen name="ChatRoom" component={ChatRoom} /> */}
+            
           </Stack.Navigator>
         </NavigationContainer>
       </View>

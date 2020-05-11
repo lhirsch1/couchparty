@@ -2,9 +2,12 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
+import { ScrollView } from 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import * as firebase from 'firebase'
 import { MonoText } from '../components/StyledText';
-import { ScrollView } from 'react-native-gesture-handler';
+import LinksScreen from './LinksScreen';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
@@ -49,15 +52,28 @@ auth.onAuthStateChanged(firebaseUser => {
   }
 });
 
-function handleFormSubmit(event){
+function handleCreateUser(event){
   var user = document.getElementById('userName').value
   var pass =  document.getElementById('password').value
   createUser(user,pass)
 
 }
 
+function handleSignIn(event){
+  var userSign = document.getElementById('userNameSign').value
+  var passSign =  document.getElementById('passwordSign').value
+  auth.signInWithEmailAndPassword(userSign,passSign)
+  .catch(err => console.log(err))
+}
 
-export default function HomeScreen() {
+function handleSignOut(){
+  auth.signOut()
+  .then(console.log('signed out'))
+  .catch(error => console.log(error))
+}
+console.log('env  ', process.env)
+
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -84,19 +100,58 @@ export default function HomeScreen() {
               <Input id='password' placeholder="Password" />
             </Item>
             <Button rounded light
-            onPress={handleFormSubmit}
+            onPress={handleCreateUser}
             >
               <Text>Create Account</Text>
             </Button>
           </Form>
         </Content>
-      </Container>
-
+        <Content>
+          <Form>
+            <Item>
+              <Input id='userNameSign' placeholder="Username" />
+            </Item>
+            <Item last>
+              <Input id='passwordSign' placeholder="Password" />
+            </Item>
+            <Button rounded light
+            onPress={handleSignIn}
+            >
+              <Text>Sign In</Text>
+            </Button>
+          </Form>
+          <Button rounded
+          onPress={handleSignOut}
+          >
+            <Text>Log Out</Text>
+          </Button>
           <Button 
-          onPress={createUser}
-          title='hello'
-          
-          />
+            title="Chat Room"
+            onPress={()=> navigation.navigate('ChatRoom')}
+          >
+            <Text>
+              Chat Room
+            </Text>
+          </Button>
+          <Button 
+            title="Poll"
+            onPress={()=> navigation.navigate('Poll')}
+          >
+            <Text>
+              Poll
+            </Text>
+          </Button>
+          <Button 
+            title="Chat Menu"
+            onPress={()=> navigation.navigate('ChatMenu')}
+          >
+            <Text>
+              Chat Menu
+            </Text>
+          </Button>
+
+        </Content>
+      </Container>
         </View>
 
         <View style={styles.getStartedContainer}>

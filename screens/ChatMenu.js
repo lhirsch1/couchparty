@@ -3,6 +3,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import * as firebase from 'firebase'
 import { StyleSheet, Text, View } from 'react-native';
+import { RectButton, ScrollView } from 'react-native-gesture-handler';
 
 
 
@@ -11,13 +12,13 @@ export default function LinksScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <OptionButton
         icon="md-school"
-        label="Read the Expo documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://docs.expo.io')}
+        label="Create Poll"
+        onPress={() => navigation.navigate('LinksScreen')}
       />
 
       <OptionButton
         icon="md-compass"
-        label="Read the React Navigation documentation"
+        label="Start Chat"
         onPress={() => WebBrowser.openBrowserAsync('https://reactnavigation.org')}
       />
 

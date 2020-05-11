@@ -7,6 +7,7 @@ import LinksScreen from '../screens/LinksScreen';
 import LoginScreen from '../screens/LoginScreen';
 import ChatScreen from "../screens/ChatScreen";
 
+
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
 
@@ -59,7 +60,7 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'How to get started';
+      return 'CouchParty';
     case 'Links':
       return 'Links to learn more';
   }
