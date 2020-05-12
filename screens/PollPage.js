@@ -15,11 +15,6 @@ import firebase from "firebase";
 // display count by each option
     // would like this to show in real-time if possible
 
-let exampleObject = {
-  "Jaws": 0,
-  "Titanic": 0
-}
-
 var optionObject = {}
   
 export default class ToastExample extends React.Component {
@@ -27,24 +22,36 @@ export default class ToastExample extends React.Component {
     pollOptions: {}
   }
 
-  updateVote = (event) => {
-    let choice = event.target.firstChild.innerHTML;
-    // update count by 1
-    // save choice to firebase
+  updateVote = ({option}) => {
+    
+    console.log("Button: ", option)
+    // this.setState(event.target.value +1)
     console.log("HERE", event.target.firstChild.innerHTML)
+
+    console.log(this.state.pollOptions)
+    //setState for this.state.pollOptions.[option] ++
+    //First step is to find out how to call the data from state dynamically
+    //Second step is to figure out how to store the data dynamically
+    /*
+    this.setState({pollOptions.optionObject.hasChild(option): pollOptions.optionObject.hasChild(option)++ })
+    */
+    
+    firebase.database().ref("Poll/optionObject/" + option).once("value").then((snapshot) => {
+      firebase.database().ref("Poll/optionObject/").update({[option]: snapshot.val()+1})
+      
+    })
+
+
   }
 
   getOptions() {
     firebase.database().ref("Poll").once('value').then((snapshot) => {
-      optionObject = (snapshot.val())
-      console.log("OptionsObject: ", optionObject)   
+      optionObject = (snapshot.val())  
       this.updateState(optionObject)
     })
   }
   updateState = (optionObject) =>{
-    console.log("Optionset4: ", optionObject)
     this.setState({pollOptions: optionObject})
-    console.log("pollOptions: ", this.state.pollOptions)
   }
   componentWillMount(){
   this.getOptions()
@@ -59,7 +66,7 @@ export default class ToastExample extends React.Component {
 
  
 // in database (could store in state)- use signin to get the user name and see if they voted (Set inital to false)... once voted, set to true which will prevent the second vote... set this by chatroom so user is not prevented from voting again in another poll 
-
+// this.updateVote(event)
   render() {
     const movies = this.state.pollOptions.optionObject
     console.log("line 64: ", movies)
@@ -72,13 +79,11 @@ export default class ToastExample extends React.Component {
           {movies? Object.keys(movies).map((option, index)=>{
             return( 
               <>
-              <Button onPress={(event)=> {
-              Toast.show({
-                text: 'Thanks for voting!',
-                buttonText: 'Okay',
-              })  
-              this.updateVote(event)
-              }
+              <Button key={index} value={option} onPress={(event)=> {
+              console.log("event: ", {option})
+                this.updateVote({option})
+            }
+              
               }>
               <Text>{option}</Text>
               </Button>
