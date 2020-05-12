@@ -64,7 +64,12 @@ class Fire {
     get db() {
         return firebase.database().ref("messages");
     }
-    
+    //add a path - messages/vote
+    //create a method that is responsible for getting the poll and allow the user to post to the poll
+    //firebase.database().ref('chatroom/poll') - here is wher eyou will set the poll with the values from the poll
+    //keys will be movie/show name
+    //pair is count
+    //another method responsible for updating the poll - chatroom/poll/movieName
     get uid(){
         return(firebase.auth().currentUser || {}).uid
         

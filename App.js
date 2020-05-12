@@ -13,7 +13,7 @@ import HomeScreen from './screens/HomeScreen';
 import LinksScreen from './screens/LinksScreen';
 import ChatMenu from './screens/ChatMenu';
 import CreatePoll from './screens/CreatePoll'
-//import Poll from './screens/PollScreen'
+import Poll from './screens/PollPage'
 import LoginScreen from "./screens/LoginScreen"
 import ChatScreen from "./screens/ChatScreen"
 
@@ -60,9 +60,9 @@ export default function App(props) {
             <Stack.Screen name="CreatePoll" component={CreatePoll}/>
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            {/*
+            
             <Stack.Screen name="Poll" component={Poll} />
-            */}
+           
             
           </Stack.Navigator>
         </NavigationContainer>
