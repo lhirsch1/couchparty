@@ -2,6 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Container, Button, Header, Content, Item, Input } from 'native-base';
 import { StyleSheet, Text } from 'react-native';
+import firebase from "firebase"
 
 // this function might go on its own page- poll should probably be on a separate screen
 // function createPoll will pass in choices (list of options from the input boxes)
@@ -14,9 +15,20 @@ function createPoll(choices){
     // get name of movie
     optionObject[document.getElementById(option).value] = 0
   });
-  // console.log(optionObject) 
+
+  console.log(optionObject) 
+
+  writeUserData(optionObject)
   // save optionObject to firebase after chatroom database has been made
   // direct to next page to render the whole poll and pass values as props
+}
+
+function writeUserData(optionObject){
+
+  firebase.database().ref("Poll").set({
+    optionObject
+  })
+
 }
 
 export default class RoundedTextboxExample extends React.Component {
