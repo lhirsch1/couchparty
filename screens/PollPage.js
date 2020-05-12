@@ -1,7 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Container, Header, Content, Toast, Button, Text, Root} from 'native-base';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ActivityIndicator } from 'react-native';
 import CreatePoll from "../screens/CreatePoll"
 import firebase from "firebase";
 
@@ -19,15 +19,14 @@ let exampleObject = {
   "Jaws": 0,
   "Titanic": 0
 }
-function getOptions() {
-  return firebase.database().ref("Poll").once('value').then(function(snapshot){
-    var optionsObject = (snapshot.val())
-    console.log("OptionsObject: ", optionsObject)
-   
-  })
-}
 
+var optionObject = {}
+  
 export default class ToastExample extends React.Component {
+  state = {
+    pollOptions: {}
+  }
+
   updateVote = (event) => {
     let choice = event.target.firstChild.innerHTML;
     // update count by 1
@@ -35,27 +34,43 @@ export default class ToastExample extends React.Component {
     console.log("HERE", event.target.firstChild.innerHTML)
   }
 
-
-
-  componentDidMount(){
-  getOptions()
-
+  getOptions() {
+    firebase.database().ref("Poll").once('value').then((snapshot) => {
+      optionObject = (snapshot.val())
+      console.log("OptionsObject: ", optionObject)   
+      this.updateState(optionObject)
+    })
+  }
+  updateState = (optionObject) =>{
+    console.log("Optionset4: ", optionObject)
+    this.setState({pollOptions: optionObject})
+    console.log("pollOptions: ", this.state.pollOptions)
+  }
+  componentWillMount(){
+  this.getOptions()
+  // console.log("optionObject3: ", optionObject)
+  // this.setState({pollOptions: optionObject})
+  // firebase.database().ref("Poll").once('value').then(function(snapshot){
+  //   optionObject = (snapshot.val())
+  //   console.log("OptionsObject1: ", optionObject)
+  // })
+    
  } 
-
 
  
 // in database (could store in state)- use signin to get the user name and see if they voted (Set inital to false)... once voted, set to true which will prevent the second vote... set this by chatroom so user is not prevented from voting again in another poll 
 
   render() {
-   
+    const movies = this.state.pollOptions.optionObject
+    console.log("line 64: ", movies)
     return (
       <Root>
       <Container>
         <Header />
         <Content padder>
           {/* .keys will take the property of the object and turn it into an array (example- [Jaws, Titanic]*/}
-          {Object.keys(exampleObject).map((option, index)=>{
-            return(
+          {movies? Object.keys(movies).map((option, index)=>{
+            return( 
               <>
               <Button onPress={(event)=> {
               Toast.show({
@@ -70,7 +85,9 @@ export default class ToastExample extends React.Component {
               <br></br>
               </>
             )
-          })}
+          })
+          :<ActivityIndicator size="small" color="#00ff00" />
+        }
 
         </Content>
       </Container>
