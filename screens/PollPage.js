@@ -19,7 +19,7 @@ let exampleObject = {
   "Jaws": 0,
   "Titanic": 0
 }
-function getOptions(){
+function getOptions() {
   return firebase.database().ref("Poll").once('value').then(function(snapshot){
     var optionsObject = (snapshot.val())
     console.log("OptionsObject: ", optionsObject)
@@ -35,15 +35,19 @@ export default class ToastExample extends React.Component {
     console.log("HERE", event.target.firstChild.innerHTML)
   }
 
+
+
   componentDidMount(){
   getOptions()
 
  } 
+
+
  
 // in database (could store in state)- use signin to get the user name and see if they voted (Set inital to false)... once voted, set to true which will prevent the second vote... set this by chatroom so user is not prevented from voting again in another poll 
 
   render() {
- 
+   
     return (
       <Root>
       <Container>
