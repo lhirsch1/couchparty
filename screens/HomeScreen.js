@@ -31,13 +31,15 @@ const auth = firebase.auth();
 //  auth.createUserWithEmailAndPassword(email,pass);
 // auth.onAuthStateChanged(firebaseUser => {});
 
-function createUser(user, pass){
+function createUser(user, pass, navigation){
 
 
   const auth = firebase.auth();
   //need to validate email input
   const promise = auth.createUserWithEmailAndPassword(user,pass);
-  promise.catch(e => console.log(e.message));
+  promise
+  .then(e => (navigation.navigate('ChatMenu')))
+  .catch(e => console.log(e.message));
   // auth.onAuthStateChanged(firebaseUser => {});
 }
 
@@ -52,20 +54,6 @@ auth.onAuthStateChanged(firebaseUser => {
   }
 });
 
-function handleCreateUser(event){
-  var user = document.getElementById('userName').value
-  var pass =  document.getElementById('password').value
-  createUser(user,pass)
-
-}
-
-function handleSignIn(event){
-  var userSign = document.getElementById('userNameSign').value
-  var passSign =  document.getElementById('passwordSign').value
-  auth.signInWithEmailAndPassword(userSign,passSign)
-  .catch(err => console.log(err))
-}
-
 function handleSignOut(){
   auth.signOut()
   .then(console.log('signed out'))
@@ -74,6 +62,20 @@ function handleSignOut(){
 console.log('env  ', process.env)
 
 export default function HomeScreen({navigation}) {
+  function handleCreateUser(event) {
+    var user = document.getElementById('userName').value
+    var pass =  document.getElementById('password').value
+    createUser(user, pass, navigation)
+  }
+
+  function handleSignIn(event){
+    var userSign = document.getElementById('userNameSign').value
+    var passSign =  document.getElementById('passwordSign').value
+    auth.signInWithEmailAndPassword(userSign,passSign)
+    .then(e => (navigation.navigate('ChatMenu')))
+    .catch(err => console.log(err))
+  }
+  
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>

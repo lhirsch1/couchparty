@@ -38,10 +38,8 @@ export default class ToastExample extends React.Component {
     
     firebase.database().ref("Poll/optionObject/" + option).once("value").then((snapshot) => {
       firebase.database().ref("Poll/optionObject/").update({[option]: snapshot.val()+1})
-      
     })
-
-
+    .then(e => (this.props.navigation.navigate('LoginScreen')))
   }
 
   getOptions() {
@@ -50,9 +48,11 @@ export default class ToastExample extends React.Component {
       this.updateState(optionObject)
     })
   }
+
   updateState = (optionObject) =>{
     this.setState({pollOptions: optionObject})
   }
+
   componentWillMount(){
   this.getOptions()
   // console.log("optionObject3: ", optionObject)

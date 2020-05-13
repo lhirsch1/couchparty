@@ -7,19 +7,19 @@ import { RectButton, ScrollView } from 'react-native-gesture-handler';
 
 
 
-export default function LinksScreen() {
+export default function LinksScreen({navigation}) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <OptionButton
         icon="md-school"
         label="Create Poll"
-        onPress={() => navigation.navigate('LinksScreen')}
+        onPress={() => navigation.navigate('CreatePoll')}
       />
 
       <OptionButton
         icon="md-compass"
         label="Start Chat"
-        onPress={() => WebBrowser.openBrowserAsync('https://reactnavigation.org')}
+        onPress={() => navigation.navigate('LoginScreen')}
       />
 
       <OptionButton
