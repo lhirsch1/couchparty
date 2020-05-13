@@ -5,6 +5,7 @@ import { Container, Header, Content, Form, Item, Button, Input } from 'native-ba
 import { ScrollView } from 'react-native-gesture-handler';
 import * as firebase from 'firebase'
 
+
 var firebaseConfig = {
   apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
   authDomain: "couchparty-d571d.firebaseapp.com",
@@ -93,7 +94,7 @@ export default function HomeScreen({navigation}) {
             >
               <Text>Create Account</Text>
             </Button>
-            <br></br>
+           
             <Button rounded light
             onPress={handleSignIn}
             >

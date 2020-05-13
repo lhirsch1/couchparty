@@ -19,7 +19,8 @@ var optionObject = {}
   
 export default class ToastExample extends React.Component {
   state = {
-    pollOptions: {}
+    pollOptions: {},
+    name: ""
   }
 
   updateVote = ({option}) => {
@@ -39,7 +40,7 @@ export default class ToastExample extends React.Component {
     firebase.database().ref("Poll/optionObject/" + option).once("value").then((snapshot) => {
       firebase.database().ref("Poll/optionObject/").update({[option]: snapshot.val()+1})
     })
-    .then(e => (this.props.navigation.navigate('LoginScreen')))
+    .then(e => (this.props.navigation.navigate('ChatScreen', {name: this.props.route.params.name})))
   }
 
   getOptions() {
@@ -47,6 +48,7 @@ export default class ToastExample extends React.Component {
       optionObject = (snapshot.val())  
       this.updateState(optionObject)
     })
+    
   }
 
   updateState = (optionObject) =>{
@@ -55,6 +57,7 @@ export default class ToastExample extends React.Component {
 
   componentWillMount(){
   this.getOptions()
+ 
   // console.log("optionObject3: ", optionObject)
   // this.setState({pollOptions: optionObject})
   // firebase.database().ref("Poll").once('value').then(function(snapshot){
