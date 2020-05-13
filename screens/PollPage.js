@@ -71,15 +71,15 @@ export default class ToastExample extends React.Component {
     const movies = this.state.pollOptions.optionObject
     console.log("line 64: ", movies)
     return (
-      <Root>
       <Container>
-        <Header />
+      <br></br>
+      <Text>Vote for one option</Text>
         <Content padder>
           {/* .keys will take the property of the object and turn it into an array (example- [Jaws, Titanic]*/}
           {movies? Object.keys(movies).map((option, index)=>{
             return( 
               <>
-              <Button key={index} value={option} onPress={(event)=> {
+              <Button rounded light key={index} value={option} onPress={(event)=> {
               console.log("event: ", {option})
                 this.updateVote({option})
             }
@@ -96,7 +96,6 @@ export default class ToastExample extends React.Component {
 
         </Content>
       </Container>
-      </Root>
     );
   }
 }

@@ -60,9 +60,7 @@ export default function App(props) {
             <Stack.Screen name="CreatePoll" component={CreatePoll} options={{title:'CouchParty'}}/>
             <Stack.Screen name="ChatScreen" component={ChatScreen} options={{title:'CouchParty'}} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title:'CouchParty'}}/>
-            
-            <Stack.Screen name="Poll" component={Poll} />
-           
+            <Stack.Screen name="Poll" component={Poll} options={{title:'CouchParty'}} />
             
           </Stack.Navigator>
         </NavigationContainer>
