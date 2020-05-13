@@ -54,15 +54,13 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="root" component={HomeScreen} options={{title:'Sign Up'}}/>
-            <Stack.Screen name="LinksScreen" component={LinksScreen} />
-            <Stack.Screen name="ChatMenu" component={ChatMenu} />
-            <Stack.Screen name="CreatePoll" component={CreatePoll}/>
-            <Stack.Screen name="ChatScreen" component={ChatScreen} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            
-            <Stack.Screen name="Poll" component={Poll} />
-           
+            <Stack.Screen name="root" component={HomeScreen} options={{title:'CouchParty'}}/>
+            <Stack.Screen name="LinksScreen" component={LinksScreen} options={{title:'CouchParty'}}/>
+            <Stack.Screen name="ChatMenu" component={ChatMenu} options={{title:'CouchParty'}} />
+            <Stack.Screen name="CreatePoll" component={CreatePoll} options={{title:'CouchParty'}}/>
+            <Stack.Screen name="ChatScreen" component={ChatScreen} options={{title:'CouchParty'}} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title:'CouchParty'}}/>
+            <Stack.Screen name="Poll" component={Poll} options={{title:'CouchParty'}} />
             
           </Stack.Navigator>
         </NavigationContainer>

@@ -11,23 +11,18 @@ export default function LinksScreen({navigation}) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <OptionButton
-        icon="md-school"
+        icon="md-stats"
         label="Create Poll"
         onPress={() => navigation.navigate('CreatePoll')}
       />
 
+    
       <OptionButton
-        icon="md-compass"
+        icon = "ios-chatboxes"
         label="Start Chat"
-        onPress={() => navigation.navigate('LoginScreen')}
-      />
-
-      <OptionButton
-        icon="ios-chatboxes"
-        label="Ask a question on the forums"
-        onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
-        isLastOption
-      />
+        onPress={() => navigation.navigate('LoginScreen')}>
+        </OptionButton>
+      
     </ScrollView>
   );
 }

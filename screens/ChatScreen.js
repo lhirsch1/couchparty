@@ -9,12 +9,6 @@ class CardExample extends Component {
   render() {
       console.log("CHECK THIS ONE", this.props.pollResults)
     return (
-      <Container>
-        <Header />
-        <Content>
-          <Card>
-            <CardItem>
-              <Body>
                 <Text>
                    Voting Results
                    <br></br>
@@ -24,11 +18,6 @@ class CardExample extends Component {
                     )})} 
                     </ul> 
                 </Text>
-              </Body>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
     );
   }
 }

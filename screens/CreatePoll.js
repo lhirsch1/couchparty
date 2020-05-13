@@ -53,7 +53,6 @@ export default class RoundedTextboxExample extends React.Component {
     //console.log(this.state.optionsArray)
     return (
       <Container>
-        <Header />
         <Content>
           <h3> Let's start creating your poll!</h3>
           {/*will map through the options by allowing a new input field to be created and saving the input to the new array */}
