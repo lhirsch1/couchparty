@@ -57,6 +57,10 @@ class Fire {
         this.db.on('child_added', snapshot => callback(this.parse(snapshot)));
     };
 
+    getPollResults = callback => {
+        return firebase.database().ref("Poll").on('value', snapshot => callback(snapshot.val()));
+    };
+
     off() {
         this.db.off()
     }
