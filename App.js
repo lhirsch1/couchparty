@@ -54,7 +54,7 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="root" component={HomeScreen} options={{title:'Sign Up'}}/>
+            <Stack.Screen name="root" component={HomeScreen} options={{title:'CouchParty'}}/>
             <Stack.Screen name="LinksScreen" component={LinksScreen} />
             <Stack.Screen name="ChatMenu" component={ChatMenu} />
             <Stack.Screen name="CreatePoll" component={CreatePoll}/>
