@@ -3,11 +3,7 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import * as firebase from 'firebase'
-import { MonoText } from '../components/StyledText';
-import LinksScreen from './LinksScreen';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB1KmSbJqwSNpyuw3AjcoMLu76MY8H5a7I",
@@ -18,8 +14,6 @@ var firebaseConfig = {
   messagingSenderId: "821252602321",
   appId: "1:821252602321:web:385b04d72c079f3824c8f0",
   measurementId: "G-8NELRFXV6M",
- 
-
 }; 
 var email ='123@gmail.com';
 var pass = 'abc'
@@ -27,19 +21,14 @@ firebase.initializeApp(firebaseConfig);
 
 //firebase authenication with email
 const auth = firebase.auth();
-//  auth.signInWithEmailAndPassword(email, pass);
-//  auth.createUserWithEmailAndPassword(email,pass);
-// auth.onAuthStateChanged(firebaseUser => {});
 
 function createUser(user, pass, navigation){
-
   const auth = firebase.auth();
   //need to validate email input
   const promise = auth.createUserWithEmailAndPassword(user,pass);
   promise
   .then(e => (navigation.navigate('ChatMenu')))
-  .catch(e => console.log(e.message));
-  // auth.onAuthStateChanged(firebaseUser => {});
+  .catch(e => alert(e.message));
 }
 
 auth.onAuthStateChanged(firebaseUser => {
@@ -68,8 +57,8 @@ export default function HomeScreen({navigation}) {
   }
 
   function handleSignIn(event){
-    var userSign = document.getElementById('userNameSign').value
-    var passSign =  document.getElementById('passwordSign').value
+    var userSign = document.getElementById('userName').value
+    var passSign =  document.getElementById('password').value
     auth.signInWithEmailAndPassword(userSign,passSign)
     .then(e => (navigation.navigate('ChatMenu')))
     .catch(err => console.log(err))
@@ -105,22 +94,16 @@ export default function HomeScreen({navigation}) {
             >
               <Text>Create Account</Text>
             </Button>
-          </Form>
-        </Content>
-        <Content>
-          <Form>
-            <Item>
-              <Input id='userNameSign' placeholder="Username" />
-            </Item>
-            <Item last>
-              <Input id='passwordSign' placeholder="Password" />
-            </Item>
+            <br></br>
             <Button rounded light
             onPress={handleSignIn}
             >
-              <Text>Sign In</Text>
+              <Text>Log in</Text>
             </Button>
           </Form>
+        </Content>
+        <Content>
+  
           <Button rounded
           onPress={handleSignOut}
           >
@@ -238,4 +221,7 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5,
   },
+  hideElement:{
+    display: "none",
+  }
 });
