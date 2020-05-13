@@ -19,7 +19,7 @@ export default function LinksScreen({navigation}) {
       <OptionButton
         icon="md-compass"
         label="Start Chat"
-        onPress={() => navigation.navigate('ChatScreen')}
+        onPress={() => navigation.navigate('LoginScreen')}
       />
 
       <OptionButton
