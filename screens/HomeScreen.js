@@ -80,7 +80,6 @@ export default function HomeScreen({navigation}) {
         <View>
 
         <Container>
-        <Header />
         <Content>
           <Form>
             <Item>
@@ -104,11 +103,12 @@ export default function HomeScreen({navigation}) {
         </Content>
         <Content>
   
-          <Button rounded
+          {/* <Button rounded
           onPress={handleSignOut}
           >
             <Text>Log Out</Text>
-          </Button>
+          </Button> */}
+
           {/* <Button 
             title="Chat Room"
             onPress={()=> navigation.navigate('LoginScreen')}
@@ -154,9 +154,9 @@ export default function HomeScreen({navigation}) {
   );
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
-};
+// HomeScreen.navigationOptions = {
+//   header: null,
+// };
 
 // function handleLearnMorePress() {
 //   WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
@@ -221,7 +221,4 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5,
   },
-  hideElement:{
-    display: "none",
-  }
 });
