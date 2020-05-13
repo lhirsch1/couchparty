@@ -4,9 +4,9 @@ import { Container, Button, Header, Content, Item, Input } from 'native-base';
 import { StyleSheet, Text } from 'react-native';
 import firebase from "firebase"
 
-// this function might go on its own page- poll should probably be on a separate screen
+
 // function createPoll will pass in choices (list of options from the input boxes)
-function createPoll(choices){
+function createPoll(choices, navigation){
   //console.log("THIS ONE", choices)
   // set optionObject to an empty object
   let optionObject = {};
@@ -18,16 +18,17 @@ function createPoll(choices){
 
   console.log(optionObject) 
 
-  writeUserData(optionObject)
+  writeUserData(optionObject, navigation)
   // save optionObject to firebase after chatroom database has been made
   // direct to next page to render the whole poll and pass values as props
 }
 
-function writeUserData(optionObject){
+function writeUserData(optionObject, navigation){
 
   firebase.database().ref("Poll").set({
     optionObject
   })
+  .then(e => (navigation.navigate('Poll')))
 
 }
 
@@ -73,7 +74,7 @@ export default class RoundedTextboxExample extends React.Component {
           </Button>
           <br></br>
           {/* when Button is clicked, will call createPoll */}
-          <Button rounded light onPress={()=>{createPoll(this.state.optionsArray)}}>
+          <Button rounded light onPress={()=>{createPoll(this.state.optionsArray, this.props.navigation)}}>
             <Text>Create my poll!</Text>
           </Button>
         </Content>
