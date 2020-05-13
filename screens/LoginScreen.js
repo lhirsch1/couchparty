@@ -9,7 +9,7 @@ export default class LoginScreen extends React.Component {
 
     continue = () => {
         
-        this.props.navigation.navigate("ChatScreen", {name: this.state.name})
+        this.props.navigation.navigate("Poll", {name: this.state.name})
     }
     render() {
         return (
