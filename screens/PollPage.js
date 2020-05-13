@@ -39,7 +39,7 @@ export default class ToastExample extends React.Component {
     firebase.database().ref("Poll/optionObject/" + option).once("value").then((snapshot) => {
       firebase.database().ref("Poll/optionObject/").update({[option]: snapshot.val()+1})
     })
-    .then(e => (this.props.navigation.navigate('ChatScreen')))
+    .then(e => (this.props.navigation.navigate('LoginScreen')))
   }
 
   getOptions() {
