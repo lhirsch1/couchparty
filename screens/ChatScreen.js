@@ -9,18 +9,19 @@ class CardExample extends Component {
   render() {
       console.log("CHECK THIS ONE", this.props.pollResults)
     return (
-                <Text>
-                   Voting Results
-                   <br></br>
-                   <ul>{this.props.pollResults.optionObject && Object.keys(this.props.pollResults.optionObject).map((key, index)=>{
-                    return(
-                        <li>{key}: {this.props.pollResults.optionObject[key]}</li>
+      <Text>
+          Voting Results
+          <br></br>
+            <ul>{this.props.pollResults.optionObject && Object.keys(this.props.pollResults.optionObject).map((key, index)=>{
+                return(
+                    <li>{key}: {this.props.pollResults.optionObject[key]}</li>
                     )})} 
                     </ul> 
-                </Text>
+      </Text>
     );
   }
 }
+
 
 export default class ChatScreen extends React.Component {
     state = {
