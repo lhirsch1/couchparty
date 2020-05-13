@@ -16,18 +16,13 @@ export default function LinksScreen({navigation}) {
         onPress={() => navigation.navigate('CreatePoll')}
       />
 
+    
       <OptionButton
-        icon="md-compass"
+        icon = "ios-chatboxes"
         label="Start Chat"
-        onPress={() => navigation.navigate('LoginScreen')}
-      />
-
-      <OptionButton
-        icon="ios-chatboxes"
-        label="Ask a question on the forums"
-        onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
-        isLastOption
-      />
+        onPress={() => navigation.navigate('LoginScreen')}>
+        </OptionButton>
+      
     </ScrollView>
   );
 }
