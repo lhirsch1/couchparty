@@ -11,7 +11,7 @@ export default function LinksScreen({navigation}) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <OptionButton
-        icon="md-school"
+        icon="md-stats"
         label="Create Poll"
         onPress={() => navigation.navigate('CreatePoll')}
       />
