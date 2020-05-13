@@ -38,7 +38,7 @@ function createUser(user, pass, navigation){
   //need to validate email input
   const promise = auth.createUserWithEmailAndPassword(user,pass);
   promise
-  .then(e => (navigation.navigate('CreatePoll')))
+  .then(e => (navigation.navigate('ChatMenu')))
   .catch(e => console.log(e.message));
   // auth.onAuthStateChanged(firebaseUser => {});
 }
@@ -72,7 +72,7 @@ export default function HomeScreen({navigation}) {
     var userSign = document.getElementById('userNameSign').value
     var passSign =  document.getElementById('passwordSign').value
     auth.signInWithEmailAndPassword(userSign,passSign)
-    .then(e => (navigation.navigate('CreatePoll')))
+    .then(e => (navigation.navigate('ChatMenu')))
     .catch(err => console.log(err))
   }
   
