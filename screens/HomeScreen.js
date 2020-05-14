@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import * as React from 'react';
+import React, {useState} from 'react';
 import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -23,14 +23,7 @@ firebase.initializeApp(firebaseConfig);
 //firebase authenication with email
 const auth = firebase.auth();
 
-function createUser(user, pass, navigation){
-  const auth = firebase.auth();
-  //need to validate email input
-  const promise = auth.createUserWithEmailAndPassword(user,pass);
-  promise
-  .then(e => (navigation.navigate('ChatMenu')))
-  .catch(e => alert(e.message));
-}
+
 
 auth.onAuthStateChanged(firebaseUser => {
 
@@ -51,16 +44,40 @@ function handleSignOut(){
 console.log('env  ', process.env)
 
 export default function HomeScreen({navigation}) {
+
+  // const [userState, setUserState] = useState([])
+
+  const [formObject, setFormObject] = useState({
+    user: '',
+    pass:''
+  })
+
+  function handleInputChange(event){
+    const {id,value} = event.target;
+    setFormObject({...formObject, [id]: value})
+  };
+
   function handleCreateUser(event) {
-    var user = document.getElementById('userName').value
-    var pass =  document.getElementById('password').value
-    createUser(user, pass, navigation)
+    event.preventDefault();
+    console.log("handle create user", formObject)
+    if(formObject.user && formObject.pass){
+      createUser(formObject.user, formObject.pass, navigation)
+    }
   }
 
+  function createUser(user, pass, navigation){
+    const auth = firebase.auth();
+    console.log('create ', user, pass)
+    //need to validate email input
+    const promise = auth.createUserWithEmailAndPassword(user,pass);
+    promise
+    .then(e => (navigation.navigate('ChatMenu')))
+    .catch(e => alert(e.message));
+  }
   function handleSignIn(event){
-    var userSign = document.getElementById('userName').value
-    var passSign =  document.getElementById('password').value
-    auth.signInWithEmailAndPassword(userSign,passSign)
+    event.preventDefault();
+    if(formObject.user && formObject.pass)
+    auth.signInWithEmailAndPassword(formObject.user,formObject.pass)
     .then(e => (navigation.navigate('ChatMenu')))
     .catch(err => alert("Email not found. Please create an account"))
   }
@@ -84,10 +101,16 @@ export default function HomeScreen({navigation}) {
         <Content>
           <Form>
             <Item>
-              <Input id='userName' placeholder="Username" />
+              <Input 
+              onChange={handleInputChange}
+              id='user'
+              placeholder="Username"  />
             </Item>
             <Item last>
-              <Input id='password' placeholder="Password" />
+              <Input 
+              onChange={handleInputChange}
+              id='pass' 
+              placeholder="Password" />
             </Item>
             <Button rounded light
             onPress={handleCreateUser}
@@ -105,46 +128,11 @@ export default function HomeScreen({navigation}) {
         </Content>
         <Content>
   
-          {/* <Button rounded
+         {/* <Button rounded
           onPress={handleSignOut}
           >
             <Text>Log Out</Text>
           </Button> */}
-
-          {/* <Button 
-            title="Chat Room"
-            onPress={()=> navigation.navigate('LoginScreen')}
-          >
-            <Text>
-              Chat Room
-            </Text>
-          </Button>
-          <Button 
-            title="Poll"
-            onPress={()=> navigation.navigate('Poll')}
-          >
-            <Text>
-              Poll
-            </Text>
-          </Button>
-          <Button 
-            title="CreatePoll"
-            onPress={()=> navigation.navigate('CreatePoll')}
-          >
-            <Text>
-              Create Poll
-            </Text>
-          </Button>
-          <Button 
-            title="Chat Menu"
-            onPress={()=> navigation.navigate('ChatMenu')}
-          >
-            <Text>
-              Chat Menu
-            </Text>
-          </Button> */}
-
-    
         </Content>
       </Container>
         </View>
