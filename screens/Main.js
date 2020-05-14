@@ -12,7 +12,7 @@ export default class Main extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor: '#FFF'}}><Text>Welcome to CouchParty!</Text></Header>
+        <Header style={{backgroundColor: '#FFF'}}><Text>Stuck at home? Throw a CouchParty</Text></Header>
         <Content padder>
           <Card transparent>
             <CardItem>
@@ -32,7 +32,7 @@ export default class Main extends Component {
                   source = {
                       require("../assets/images/voting.JPG")
                   }
-                  style={{width: 100, height: 100}}
+                  style={{width: 170, height: 100}}
                   />
               </View>
           </Card>
@@ -43,11 +43,11 @@ export default class Main extends Component {
                   source = {
                       require("../assets/images/chat.JPG")
                   }
-                  style={{justifyContent:'center', alignItems: 'center', width: 100, height: 250}}
+                  style={{justifyContent:'center', alignItems: 'center', width: 125, height: 225}}
                   />
               </View>
           </Card>
-          <Button light rounded
+          <Button rounded rounded style={styles.button}
             onPress={() => this.handleNavigation(this.props.navigation)}
           ><Text>Get Started!</Text></Button>
         </Content>
@@ -63,5 +63,11 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       fontWeight: 'bold'
     },
+    button: {
+        justifyContent: "center",
+        backgroundColor: '#8CBCCC',
+        color: '#8CBCCC',
+        alignItems: "center",
+      },
   });
   
