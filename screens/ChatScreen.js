@@ -26,10 +26,10 @@ class CardExample extends Component {
 
     return (
         <Card>
-            <Text>Voting Results: </Text>
+            <Text style={{position: 'relative', left: 10}}>Voting Results: </Text>
         {this.props.pollResults.optionObject && Object.keys(this.props.pollResults.optionObject).map((key, index)=>{
             return( 
-              <Text> 
+              <Text style={{position: 'relative', left: 15}}> 
               {key}: {this.props.pollResults.optionObject[key]}</Text>
             )
           })
