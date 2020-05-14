@@ -4,6 +4,9 @@ import {StyleSheet, Image} from 'react-native'
 
 
 export default class Main extends Component {
+ handleNavigation(navigation){
+    navigation.navigate('HomeScreen')
+ }
 
 
   render() {
@@ -44,8 +47,8 @@ export default class Main extends Component {
                   />
               </View>
           </Card>
-          <Button
-            onPress={()=> navigation.navigate('HomeScreen')}
+          <Button light rounded
+            onPress={() => this.handleNavigation(this.props.navigation)}
           ><Text>Get Started!</Text></Button>
         </Content>
       </Container>
