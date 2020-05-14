@@ -4,6 +4,7 @@ import { Image, Platform, StyleSheet, Icon, Text, TouchableOpacity, View } from 
 import { Container, Header, Content, Form, Item, Button, Input } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 import * as firebase from 'firebase'
+import Fire from "../Fire"
 
 
 var firebaseConfig = {
@@ -16,9 +17,8 @@ var firebaseConfig = {
   appId: "1:821252602321:web:385b04d72c079f3824c8f0",
   measurementId: "G-8NELRFXV6M",
 }; 
-var email ='123@gmail.com';
-var pass = 'abc'
-firebase.initializeApp(firebaseConfig);
+
+// firebase.initializeApp(firebaseConfig);
 
 //firebase authenication with email
 const auth = firebase.auth();
@@ -52,9 +52,9 @@ export default function HomeScreen({navigation}) {
     pass:''
   })
 
-  function handleInputChange(event){
-    const {id,value} = event.target;
-    setFormObject({...formObject, [id]: value})
+  function handleInputChange(text, id){
+    // const {id,text} = event.target;
+    setFormObject({...formObject, [id]: text})
   };
 
   function handleCreateUser(event) {
@@ -102,13 +102,13 @@ export default function HomeScreen({navigation}) {
           <Form>
             <Item>
               <Input 
-              onChange={handleInputChange}
+              onChangeText={(text) => handleInputChange(text, 'user')}
               id='user'
               placeholder="Username"  />
             </Item>
             <Item last>
               <Input 
-              onChange={handleInputChange}
+              onChangeText={(text) => handleInputChange(text, 'pass')}
               id='pass' 
               placeholder="Password" />
             </Item>
