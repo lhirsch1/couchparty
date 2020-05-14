@@ -13,8 +13,15 @@ For all other users, navigate to https://expo.io/@bpolo15/couchparty-native in y
 # How to use
 To host a movie night, the host will sign up (or log in) to create a poll.  Hosts can enter in as many choices as they would like- the choices will render to a poll.  Users can access the poll and vote.  Once the user has voted, they will be directed to a chat room to start chatting with their friends.  Poll results are visible in the chat room.  The host also has control of the timer in the chat room to notify everyone when to start the movie.  
 
+# Screenshots
+After the host signs in (or logs in), they will be given an option to create a poll.  
+
+![image](/assets/images/poll.jpg)
+
+After the host signs in (or logs in), they will be given an option to create a poll. 
+
 # Contributers
 This application was developed by bpolo15, chyarbit and lhirsch1 using Google's Firebase and React Native.  The chat UI is provided by Gifted Chat.  
 
 # Application link
-To access the mobile app, please visit... 
+To access the mobile app, please visit https://expo.io/@bpolo15/couchparty-native.  
