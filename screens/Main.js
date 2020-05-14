@@ -12,7 +12,7 @@ export default class Main extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor: '#FFF'}}><Text>Stuck at home? Throw a CouchParty</Text></Header>
+        <Header style={{backgroundColor: '#FFF'}}><Text>Stuck at home? Throw a CouchParty!</Text></Header>
         <Content padder>
           <Card transparent>
             <CardItem>
