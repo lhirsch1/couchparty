@@ -16,9 +16,11 @@ To host a movie night, the host will sign up (or log in) to create a poll.  Host
 # Screenshots
 After the host signs in (or logs in), they will be given an option to create a poll.  
 
-![image](/assets/images/poll.jpg)
+![poll](/assets/images/poll.jpg)
 
-After the host signs in (or logs in), they will be given an option to create a poll. 
+After poll has been created, users will be able to vote on the poll.
+
+![voting](/assets/images/voting.jpg)
 
 # Contributers
 This application was developed by bpolo15, chyarbit and lhirsch1 using Google's Firebase and React Native.  The chat UI is provided by Gifted Chat.  
