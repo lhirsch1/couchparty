@@ -30,4 +30,6 @@ After voting, users can chat with each other.
 This application was developed by bpolo15, chyarbit and lhirsch1 using Google's Firebase and React Native.  The chat UI is provided by Gifted Chat.  
 
 # Application link
-To access the mobile app, please visit https://expo.io/@bpolo15/couchparty-native.  
+To access the mobile app (Android only), please visit https://expo.io/@bpolo15/couchparty-native.  
+
+All other users can utilize the link above in a web browser.  
