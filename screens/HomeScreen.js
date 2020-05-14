@@ -95,9 +95,9 @@ export default function HomeScreen({navigation}) {
             style={styles.welcomeImage}
           />
         </View>
-        <View>
+        <View >
 
-        <Container>
+        <Container style={styles.container}>
         <Content>
           <Form>
             <Item>
@@ -112,13 +112,13 @@ export default function HomeScreen({navigation}) {
               id='pass' 
               placeholder="Password" />
             </Item>
-            <Button rounded light
+            <Button small rounded  style={styles.button}
             onPress={handleCreateUser}
             >
               <Text>Create Account</Text>
             </Button>
            
-            <Button rounded light
+            <Button rounded small style={styles.button}
             onPress={handleSignIn}
             >
               <Text>Log in</Text>
@@ -156,7 +156,7 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
   },
   contentContainer: {
     paddingTop: 30,
@@ -212,4 +212,10 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5,
   },
+  button: {
+    justifyContent: "center",
+    backgroundColor: '#8CBCCC',
+    color: '#8CBCCC',
+    alignItems: "center",
+  }
 });

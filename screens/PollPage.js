@@ -74,15 +74,15 @@ export default class ToastExample extends React.Component {
     const movies = this.state.pollOptions.optionObject
     console.log("line 64: ", movies)
     return (
-      <Container>
+      <Container style={styles.mainText}>
       <br></br>
-      <Text>Vote for one option</Text>
+      <Text>Vote for one option: </Text>
         <Content padder>
           {/* .keys will take the property of the object and turn it into an array (example- [Jaws, Titanic]*/}
           {movies? Object.keys(movies).map((option, index)=>{
             return( 
               <>
-              <Button rounded light key={index} value={option} onPress={(event)=> {
+              <Button rounded style={styles.button} key={index} value={option} onPress={(event)=> {
               console.log("event: ", {option})
                 this.updateVote({option})
             }
@@ -104,5 +104,17 @@ export default class ToastExample extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    
+  button: {
+    justifyContent: "center",
+    backgroundColor: '#8CBCCC',
+    color: '#8CBCCC',
+    alignItems: "center",
+  },
+  mainText: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    fontWeight: 'bold'
+  },
 });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, KeyboardAvoidingView, SafeAreaView, FlatList} from 'react-native';
+import { Platform, KeyboardAvoidingView, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import { Card, Text, Button } from 'native-base';
 import {GiftedChat} from 'react-native-gifted-chat';
 import Fire from "../Fire";
@@ -25,8 +25,8 @@ class CardExample extends Component {
   render() {
 
     return (
-        <Card>
-            <Text style={{position: 'relative', left: 10}}>Voting Results: </Text>
+        <Card style = {{borderRadius: 15, borderColor: '#F9E080'}}>
+            <Text style={{position: 'relative', left: 15, fontWeight: 'bold'}}>Voting Results: </Text>
         {this.props.pollResults.optionObject && Object.keys(this.props.pollResults.optionObject).map((key, index)=>{
             return( 
               <Text style={{position: 'relative', left: 15}}> 
@@ -34,7 +34,7 @@ class CardExample extends Component {
             )
           })
         }{this.state.show ?(
-            <Button danger style ={{position: 'absolute', right: 0, top: 10}} onPress = {this.ShowHideComponenet}><Text>Start CountDown!</Text></Button>
+            <Button danger rounded style={styles.button} onPress = {this.ShowHideComponenet}><Text>Start CountDown!</Text></Button>
         )
              :
         
@@ -43,7 +43,7 @@ class CardExample extends Component {
            size={15}
            onFinish={() =>  alert('START MOVIE!') }
            digitStyle={{backgroundColor: '#FFF'}}
-           digitTxtStyle={{color: '#B79CAA'}}
+           digitTxtStyle={{color: '#8CBCCC'}}
            timeToShow={['S']}
            timeLabels={{ s: 'SEC'}}
          />}
@@ -103,3 +103,15 @@ export default class ChatScreen extends React.Component {
 }
 
 
+const styles = StyleSheet.create({
+    button: {
+      justifyContent: "center",
+      backgroundColor: '#8CBCCC',
+      color: '#8CBCCC',
+      alignItems: "center",
+      position: 'absolute', 
+      right: 0, 
+      top: 10
+    },
+ 
+  });

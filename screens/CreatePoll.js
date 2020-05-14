@@ -52,7 +52,7 @@ export default class RoundedTextboxExample extends React.Component {
   render() {
     //console.log(this.state.optionsArray)
     return (
-      <Container>
+      <Container style={styles.mainText}>
         <Content>
           <h3> Let's start creating your poll!</h3>
           {/*will map through the options by allowing a new input field to be created and saving the input to the new array */}
@@ -60,7 +60,7 @@ export default class RoundedTextboxExample extends React.Component {
             return(
             <>
             <Item rounded>
-            <Input id= {option} placeholder='Enter in an option'/>
+            <Input style={styles.input} id= {option} placeholder='Enter in an option'/>
             </Item> 
             <br></br>
             </>
@@ -68,12 +68,12 @@ export default class RoundedTextboxExample extends React.Component {
           })}
           <br></br>
           {/* when Button is clicked, will call handleNewInput to create another input box */}
-          <Button rounded light onPress={this.handleNewInput}>
+          <Button rounded light style={styles.button} onPress={this.handleNewInput}>
             <Text>Add another option</Text>
           </Button>
           <br></br>
           {/* when Button is clicked, will call createPoll */}
-          <Button rounded light onPress={()=>{createPoll(this.state.optionsArray, this.props.navigation)}}>
+          <Button rounded light style={styles.button} onPress={()=>{createPoll(this.state.optionsArray, this.props.navigation)}}>
             <Text>Create my poll!</Text>
           </Button>
         </Content>
@@ -83,5 +83,23 @@ export default class RoundedTextboxExample extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  button: {
+    justifyContent: "center",
+    backgroundColor: '#8CBCCC',
+    color: '#8CBCCC',
+    alignItems: "center",
+  },
+  mainText: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    fontWeight: 'bold'
+  },
+  input: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
     
   });
