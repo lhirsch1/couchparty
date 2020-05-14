@@ -74,9 +74,9 @@ export default class ToastExample extends React.Component {
     const movies = this.state.pollOptions.optionObject
     console.log("line 64: ", movies)
     return (
-      <Container style={styles.mainText}>
-      <br></br>
-      <Text>Vote for one option: </Text>
+      <Container style={styles.body}>
+      
+      <Text  style={styles.mainText} >Vote for one option: </Text>
         <Content padder>
           {/* .keys will take the property of the object and turn it into an array (example- [Jaws, Titanic]*/}
           {movies? Object.keys(movies).map((option, index)=>{
@@ -90,7 +90,7 @@ export default class ToastExample extends React.Component {
               }>
               <Text>{option}</Text>
               </Button>
-              <br></br>
+              
               </>
             )
           })
@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#8CBCCC',
     color: '#8CBCCC',
     alignItems: "center",
+    marginTop: 10,
   },
   mainText: {
     textAlign: 'center',
@@ -117,4 +118,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     fontWeight: 'bold'
   },
+  body: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
