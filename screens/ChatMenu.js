@@ -23,12 +23,7 @@ export default function LinksScreen({navigation}) {
         onPress={() => navigation.navigate('LoginScreen')}>
         </OptionButton>
 
-        
-      <OptionButton
-        icon = "md-stats"
-        label="Go to Poll"
-        onPress={() => navigation.navigate('Poll')}>
-        </OptionButton>
+      
       
     </ScrollView>
   );

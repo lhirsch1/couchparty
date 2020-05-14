@@ -1,23 +1,54 @@
 import React, { Component } from 'react'
-import { Platform, KeyboardAvoidingView, SafeAreaView} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
+import { Platform, KeyboardAvoidingView, SafeAreaView, FlatList} from 'react-native';
+import { Card, Text, Button } from 'native-base';
 import {GiftedChat} from 'react-native-gifted-chat';
 import Fire from "../Fire";
+import CountDown from 'react-native-countdown-component';
 
 // render poll above chat
 class CardExample extends Component {
+    constructor (){
+        super();
+        this.state = {show: true,}
+    }
+
+    ShowHideComponenet = () => {
+        if (this.state.show == true){
+            this.setState({show: false});
+            
+        }else{
+            this.setState({show: true})
+           
+        }
+    }
+
   render() {
-      console.log("CHECK THIS ONE", this.props.pollResults)
+
     return (
-                <Text>
-                   Voting Results
-                   <br></br>
-                   <ul>{this.props.pollResults.optionObject && Object.keys(this.props.pollResults.optionObject).map((key, index)=>{
-                    return(
-                        <li>{key}: {this.props.pollResults.optionObject[key]}</li>
-                    )})} 
-                    </ul> 
-                </Text>
+        <Card>
+            <Text>Voting Results: </Text>
+        {this.props.pollResults.optionObject && Object.keys(this.props.pollResults.optionObject).map((key, index)=>{
+            return( 
+              <Text> 
+              {key}: {this.props.pollResults.optionObject[key]}</Text>
+            )
+          })
+        }{this.state.show ?(
+            <Button danger style ={{position: 'absolute', right: 0, top: 10}} onPress = {this.ShowHideComponenet}><Text>Start CountDown!</Text></Button>
+        )
+             :
+        
+        <CountDown style={{position: 'absolute', right: 0, padding: 10}}
+           until={10}
+           size={15}
+           onFinish={() =>  alert('START MOVIE!') }
+           digitStyle={{backgroundColor: '#FFF'}}
+           digitTxtStyle={{color: '#B79CAA'}}
+           timeToShow={['S']}
+           timeLabels={{ s: 'SEC'}}
+         />}
+    
+        </Card>
     );
   }
 }

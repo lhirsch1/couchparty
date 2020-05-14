@@ -28,7 +28,7 @@ function writeUserData(optionObject, navigation){
   firebase.database().ref("Poll").set({
     optionObject
   })
-  .then(e => (navigation.navigate('Poll')))
+  .then(e => (navigation.navigate('LoginScreen')))
 
 }
 
