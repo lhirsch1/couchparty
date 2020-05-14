@@ -27,7 +27,7 @@ export default class ToastExample extends React.Component {
     
     console.log("Button: ", option)
     // this.setState(event.target.value +1)
-    console.log("HERE", event.target.firstChild.innerHTML)
+    
 
     console.log(this.state.pollOptions)
     //setState for this.state.pollOptions.[option] ++
