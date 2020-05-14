@@ -12,12 +12,19 @@ export default class Main extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor: '#FFF'}}><Text>Stuck at home? Throw a CouchParty!</Text></Header>
-        <Content padder>
-          <Card transparent>
+        <Content >
+          <Card>
             <CardItem>
               <Body>
                 <View style={styles.mainText}>
+                <Text>Stuck at home? Throw a CouchParty!</Text>
+                <Image
+            source={
+            require('../assets/images/image.png')
+            }
+            style={{width: 100, height: 100}}
+            
+          />
                 <Text >
                   Watch movies with your friends from the comfort of your couch!
                 </Text>
