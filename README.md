@@ -22,6 +22,10 @@ After poll has been created, users will be able to vote on the poll.
 
 ![voting](/assets/images/voting.jpg)
 
+After voting, users can chat with each other.
+
+![chat](/assets/images/chat.png)
+
 # Contributers
 This application was developed by bpolo15, chyarbit and lhirsch1 using Google's Firebase and React Native.  The chat UI is provided by Gifted Chat.  
 
