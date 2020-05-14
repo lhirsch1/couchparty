@@ -12,10 +12,12 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 import HomeScreen from './screens/HomeScreen';
 import LinksScreen from './screens/LinksScreen';
 import ChatMenu from './screens/ChatMenu';
-import CreatePoll from './screens/CreatePoll'
-import Poll from './screens/PollPage'
-import LoginScreen from "./screens/LoginScreen"
-import ChatScreen from "./screens/ChatScreen"
+import CreatePoll from './screens/CreatePoll';
+import Poll from './screens/PollPage';
+import LoginScreen from "./screens/LoginScreen";
+import ChatScreen from "./screens/ChatScreen";
+import Main from "./screens/Main"
+
 
 const Stack = createStackNavigator();
 
@@ -54,14 +56,14 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="root" component={HomeScreen} options={{title:'CouchParty'}}/>
+            <Stack.Screen name="root" component={Main} options={{title:'CouchParty'}}/>
+            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{title:'CouchParty'}}/>
             <Stack.Screen name="LinksScreen" component={LinksScreen} options={{title:'CouchParty'}}/>
             <Stack.Screen name="ChatMenu" component={ChatMenu} options={{title:'CouchParty'}} />
             <Stack.Screen name="CreatePoll" component={CreatePoll} options={{title:'CouchParty'}}/>
             <Stack.Screen name="ChatScreen" component={ChatScreen} options={{title:'CouchParty'}} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} options={{title:'CouchParty'}}/>
             <Stack.Screen name="Poll" component={Poll} options={{title:'CouchParty'}} />
-            
           </Stack.Navigator>
         </NavigationContainer>
       </View>

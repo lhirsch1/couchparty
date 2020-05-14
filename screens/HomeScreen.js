@@ -79,7 +79,7 @@ export default function HomeScreen({navigation}) {
     if(formObject.user && formObject.pass)
     auth.signInWithEmailAndPassword(formObject.user,formObject.pass)
     .then(e => (navigation.navigate('ChatMenu')))
-    .catch(err => console.log(err))
+    .catch(err => alert("Email not found. Please create an account"))
   }
   
   return (
@@ -123,6 +123,7 @@ export default function HomeScreen({navigation}) {
             >
               <Text>Log in</Text>
             </Button>
+           
           </Form>
         </Content>
         <Content>
