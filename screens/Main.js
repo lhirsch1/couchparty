@@ -30,7 +30,7 @@ export default class Main extends Component {
               <Text>Vote on what you want to watch:</Text>
                   <Image
                   source = {
-                      require("../assets/images/voting.JPG")
+                      require("../assets/images/voting.png")
                   }
                   style={{width: 170, height: 100}}
                   />
@@ -41,7 +41,7 @@ export default class Main extends Component {
                   <Text>Chat during the movie:</Text>
                   <Image
                   source = {
-                      require("../assets/images/chat.JPG")
+                      require("../assets/images/chat.png")
                   }
                   style={{justifyContent:'center', alignItems: 'center', width: 125, height: 225}}
                   />
