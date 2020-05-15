@@ -84,16 +84,16 @@ export default class ChatScreen extends React.Component {
     render() {
         
         const chat = <GiftedChat messages={this.state.messages} onSend={Fire.send} user={this.user}/>;
-        if(Platform.OS === 'android'){
-            return (
-                <>
-                <CardExample pollResults = {this.state.pollResults} />
-                <KeyboardAvoidingView style={{Flex:1}} behavior="padding" keyboardVerticalOffset={30} enabled>
-                    {chat}
-                </KeyboardAvoidingView>
-                </>
-            )
-        }
+        // if(Platform.OS === 'android'){
+        //     return (
+        //         <>
+        //         <CardExample pollResults = {this.state.pollResults} />
+        //         <KeyboardAvoidingView style={{Flex:1}} behavior="padding" keyboardVerticalOffset={30} enabled>
+        //             {chat}
+        //         </KeyboardAvoidingView>
+        //         </>
+        //     )
+        // }
     return <>
     <CardExample pollResults = {this.state.pollResults} />
     
