@@ -54,9 +54,11 @@ export default class Main extends Component {
                   />
               </View>
           </Card>
+          <View style={styles.mainText}>
           <Button rounded rounded style={styles.button}
             onPress={() => this.handleNavigation(this.props.navigation)}
           ><Text>Get Started!</Text></Button>
+          </View>
         </Content>
       </Container>
     );

@@ -98,7 +98,7 @@ export default function HomeScreen({navigation}) {
         <View >
 
         <Container style={styles.container}>
-        <Content>
+        <Content >
           <Form>
             <Item>
               <Input 
@@ -112,6 +112,7 @@ export default function HomeScreen({navigation}) {
               id='pass' 
               placeholder="Password" />
             </Item>
+            <View style={styles.content}>
             <Button small rounded  style={styles.button}
             onPress={handleCreateUser}
             >
@@ -123,7 +124,7 @@ export default function HomeScreen({navigation}) {
             >
               <Text>Log in</Text>
             </Button>
-           
+            </View>
           </Form>
         </Content>
         <Content>
@@ -155,6 +156,7 @@ export default function HomeScreen({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
+    
     flex: 1,
     backgroundColor: '#FFF',
   },
@@ -217,5 +219,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#8CBCCC',
     color: '#8CBCCC',
     alignItems: "center",
-  }
+  },
+
 });
