@@ -16,11 +16,11 @@ To host a movie night, the host will sign up (or log in) to create a poll.  Host
 # Screenshots
 After the host signs in (or logs in), they will be given an option to create a poll.  
 
-![poll](/assets/images/poll.jpg)
+![poll](/assets/images/poll.png)
 
 After poll has been created, users will be able to vote on the poll.
 
-![voting](/assets/images/voting.jpg)
+![voting](/assets/images/voting.png)
 
 After voting, users can chat with each other.
 
